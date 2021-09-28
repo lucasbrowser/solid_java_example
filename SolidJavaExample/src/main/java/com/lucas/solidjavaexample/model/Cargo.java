@@ -11,9 +11,31 @@ package com.lucas.solidjavaexample.model;
  */
 public enum Cargo {
 
-    ASSISTENTE,
-    ANALISTA,
-    ESPECIALISTA,
-    GERENTE;
+    ASSISTENTE {
+        @Override
+        public Cargo getProximoCargo() {
+            return ANALISTA;
+        }
+    },
+    ANALISTA {
+        @Override
+        public Cargo getProximoCargo() {
+            return ESPECIALISTA;
+        }
+    },
+    ESPECIALISTA {
+        @Override
+        public Cargo getProximoCargo() {
+            return GERENTE;
+        }
+    },
+    GERENTE {
+        @Override
+        public Cargo getProximoCargo() {
+            return GERENTE;
+        }
+    };
+    
+    public abstract Cargo getProximoCargo();
 
 }
